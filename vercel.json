@@ -1,14 +1,14 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "DjangoWebProject1/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": { "runtime": "python3.9", "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "DjangoWebProject1/wsgi.py"
-    }
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "DjangoWebProject1/wsgi.py" }
   ]
 }
