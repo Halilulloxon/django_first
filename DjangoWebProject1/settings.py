@@ -25,7 +25,7 @@ SECRET_KEY = 'aa19eecb-5f4a-4761-8d22-e42eef04c63e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.versel.app']
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
@@ -129,7 +129,7 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
-# Loyihaning asosiy papkasidagi .env faylini o‘qish
+# Loyihaning asosiy papkasidagi .env faylini oâ€˜qish
 environ.Env.read_env(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 DEBUG = env('DEBUG')
