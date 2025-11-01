@@ -25,8 +25,15 @@ SECRET_KEY = 'aa19eecb-5f4a-4761-8d22-e42eef04c63e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-default-key")
+DEBUG = True
+
+ALLOWED_HOSTS = ["*"]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
@@ -129,7 +136,7 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
-# Loyihaning asosiy papkasidagi .env faylini o‘qish
+# Loyihaning asosiy papkasidagi .env faylini oâ€˜qish
 environ.Env.read_env(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 DEBUG = env('DEBUG')
