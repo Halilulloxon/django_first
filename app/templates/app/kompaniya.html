@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ k.nomi }} - RefreshCo</title>
+    <link rel="stylesheet" href="{% static 'app/content/site.css' %}">
+    <link rel="icon" href="{% static 'image/image.png' %}" type="image/png">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="page-title">{{ k.nomi }}</h1>
+            {% if k.mamlakat %}
+            <p class="page-subtitle">{{ k.mamlakat }}</p>
+            {% endif %}
+        </div>
+    </header>
+
+    <section class="company-detail">
+        <div class="container">
+
+            <div class="company-card detail">
+                {% if k.logo %}
+                <img src="{{ k.logo.url }}" alt="{{ k.nomi }}" class="company-logo-large">
+                {% else %}
+                <img src="{% static 'app/content/placeholder.png' %}" alt="No image" class="company-logo-large">
+                {% endif %}
+
+                <div class="company-info">
+                    {% if k.tavsif %}
+                    <p class="tavsif">{{ k.tavsif }}</p>
+                    {% else %}
+                    <p class="tavsif">Bu kompaniya haqida hozircha ma'lumot yo‘q.</p>
+                    {% endif %}
+
+                    <ul class="contact-info">
+                        {% if k.telefon %}
+                        <li><strong>Telefon:</strong> {{ k.telefon }}</li>
+                        {% endif %}
+                        {% if k.email %}
+                        <li><strong>Email:</strong> <a href="mailto:{{ k.email }}">{{ k.email }}</a></li>
+                        {% endif %}
+                        {% if k.mamlakat %}
+                        <li><strong>Mamlakat:</strong> {{ k.mamlakat }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </section>
+
+</body>
+</html>
